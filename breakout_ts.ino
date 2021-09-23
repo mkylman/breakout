@@ -4,6 +4,7 @@ Board board;
 
 void setup() {
   tft.begin(tft.readID());
+  //Serial.begin(9600);
 
   initBoard(&board);
   
@@ -36,6 +37,9 @@ void loop() {
       drawBoard(&board, false);
       ballMove(board.ball);
       paddleMove(board.paddle);
+
+      if (board.ball->yspeed <= 1 && board.ball->yspeed >= -1)
+        board.ball->yspeed = board.ball->yspeed > 0.0 ? 2 : -2;
     }
   }
 
