@@ -45,7 +45,7 @@ void launchBall( Ball *ball ) {
       }
       
       ball->xspeed = a / c * 4;
-      ball->yspeed = b / c * 4;
+      ball->yspeed = b / c * 6;
       if (ball->xspeed && ball->yspeed) break;
     }
   }
@@ -97,11 +97,8 @@ void paddleCollision(Ball *ball, Paddle *paddle) {
       ball->xspeed = a / c * 4;
     else
       ball->xspeed = (a / c) * -4;
-    ball->yspeed = b / c * 4;
+    ball->yspeed = b / c * 6;
     ball->yspeed *= -1;
-    
-    if (ball->yspeed == 0)
-      ball->yspeed = -1;
   }
 }
 
@@ -125,7 +122,6 @@ bool brickCollision(Ball *ball, Brick *brick){
       ball->xspeed = ball->xspeed ? ball->xspeed : (millis() % 2 ? XSPEED : -XSPEED);
       ball->yspeed *= -1;
     }
-    
     return true;
   } else return false;
 }
